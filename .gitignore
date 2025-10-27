@@ -11,11 +11,8 @@ logs/
 # Gradle
 .gradle
 .gradle/
-gradle/wrapper/gradle-wrapper.jar
 build
 build/
-gradlew
-gradlew.bat
 
 # Java
 *.class
