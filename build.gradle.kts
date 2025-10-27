@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("dev.dejvokep:boosted-yaml:1.3.7")
@@ -42,15 +42,22 @@ kotlin {
     jvmToolchain(21)
 }
 
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(sourceSets["main"].allSource)
+}
+
 java {
-    withSourcesJar()
     withJavadocJar()
 }
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
+            artifactId = "s-api"
             from(components["java"])
+            artifact(sourcesJar.get())
         }
     }
     repositories {
