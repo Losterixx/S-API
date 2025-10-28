@@ -8,8 +8,12 @@ object ConfigExtras {
     private val plugin = SAPI.getPlugin()
     private val logger = plugin.logger
 
-    fun loadConfigFiles() {
+    fun loadConfigFiles(vararg configs: String) {
         val config = ConfigManager.createConfig("config", "config.yml")
+
+        for (configFile in configs) {
+            ConfigManager.createConfig(configFile, "$configFile.yml")
+        }
 
         loadLangFiles()
         val langFile = ConfigManager.getConfig("config").getString("langFile", null)

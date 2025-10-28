@@ -13,9 +13,11 @@ object DefaultMainCommand {
 
     private val plugin = SAPI.getPlugin()
     private val mm = SAPI.getMiniMessage()
-    private val messagesConfig get() = ConfigManager.getConfig(ConfigManager.getConfig("config").getString("langFile", "english"))
+    private val config get() = ConfigManager.getConfig("config")
+    private val prefix get() = config.getString("prefix")
+    private val messagesConfig get() = ConfigManager.getConfig(config.getString("langFile", "english"))
 
-    fun create(command: String, permRoot: String, prefix: String, reloadExtras: () -> Unit = {}): LiteralArgumentBuilder<CommandSourceStack> {
+    fun create(command: String, permRoot: String, reloadExtras: () -> Unit = {}): LiteralArgumentBuilder<CommandSourceStack> {
         return Commands.literal(command)
             .requires { ctx -> ctx.sender.hasPermission("$permRoot.admin.about") || ctx.sender.hasPermission("$permRoot.admin.reload") }
             .executes { ctx ->
