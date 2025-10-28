@@ -26,6 +26,7 @@ dependencies {
 
 ### Publish new version (for me)
 ```shell
+[!] Update version!
 git add .
 git commit -m "Release vX.Y.Z"
 git tag -a vX.Y.Z -m "Release vX.Y.Z"
