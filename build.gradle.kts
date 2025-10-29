@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.lostierxx"
-version = "0.1.1"
+version = "0.1.3"
 
 repositories {
     mavenCentral()
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("dev.dejvokep:boosted-yaml:1.3.7")
